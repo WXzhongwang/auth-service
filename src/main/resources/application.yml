@@ -1,0 +1,26 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: auth-service
+
+platform:
+  auth:
+    jwt:
+      secret: ${JWT_SECRET:dev-only-secret-key-change-me-in-production!!}
+      access-ttl-minutes: 120
+      refresh-ttl-days: 7
+
+# 多平台免登凭证（生产从配置中心/环境变量注入）
+platform-clients:
+  dingtalk:
+    app-key: ${DINGTALK_APP_KEY:}
+    app-secret: ${DINGTALK_APP_SECRET:}
+  wecom:
+    corp-id: ${WECOM_CORP_ID:}
+    agent-id: ${WECOM_AGENT_ID:}
+    secret: ${WECOM_SECRET:}
+  feishu:
+    app-id: ${FEISHU_APP_ID:}
+    app-secret: ${FEISHU_APP_SECRET:}
